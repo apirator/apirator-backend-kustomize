@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apirator-backend-config
+data:
+  KUBERNETES_SERVICE_HOST: "127.0.0.1:8001"
+  KUBERNETES_CONFIG_PATH: "/Users/<user>/.kube/config"
+  DEVELOPMENT: "TRUE"

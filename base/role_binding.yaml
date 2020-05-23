@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: apirator-backend-cluster-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: apirator-backend-sa
+    namespace: apirator
+roleRef:
+  kind: ClusterRole
+  name: apirator-backend-cluster-role
+  apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - role.yaml
+  - service.yaml
+  - service_account.yaml
+commonLabels:
+  app.kubernetes.io/component: backend
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/name: apirator
+  app.kubernetes.io/part-of: apirator
+  app.kubernetes.io/version: 0.0.1
+
+configMapGenerator:
+  - literals:
+      - KUBERNETES_SERVICE_HOST="127.0.0.1:8001"
+      - KUBERNETES_CONFIG_PATH="/Users/<user>/.kube/config"
+      - DEVELOPMENT="TRUE"
+    name: apirator-backend-config

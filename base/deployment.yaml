@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apirator-backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: apirator-backend
+  template:
+    metadata:
+      labels:
+        app: apirator-backend
+    spec:
+      containers:
+        - image: apirator/apirator-backend:0.0.1
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: apirator-backend-config
+          resources:
+            requests:
+              memory: "5Mi"
+              cpu: "10m"
+            limits:
+              memory: "10Mi"
+              cpu: "20m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9999
+              scheme: HTTP
+            initialDelaySeconds: 1
+          name: bets
+          ports:
+            - containerPort: 9999
+              name: http
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9999
+              scheme: HTTP
+            initialDelaySeconds: 1
+          securityContext:
+            privileged: false
