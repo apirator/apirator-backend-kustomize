@@ -3,6 +3,4 @@ kind: ConfigMap
 metadata:
   name: apirator-backend-config
 data:
-  KUBERNETES_SERVICE_HOST: ""
-  KUBERNETES_CONFIG_PATH: ""
   DEVELOPMENT: "FALSE"

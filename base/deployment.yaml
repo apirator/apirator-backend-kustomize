@@ -13,6 +13,7 @@ spec:
       labels:
         app: apirator-backend
     spec:
+      serviceAccountName: apirator-backend-sa
       containers:
         - image: apirator/apirator-backend:0.0.1
           imagePullPolicy: Always

@@ -3,6 +3,20 @@ kind: ClusterRole
 metadata:
   name: apirator-backend-cluster-role
 rules:
+  - apiGroups: [""]
+    resources:
+      - configmaps
+      - endpoints
+      - namespaces
+      - nodes
+      - pods
+      - pods/log
+      - replicationcontrollers
+      - services
+    verbs:
+      - get
+      - list
+      - watch
   - apiGroups:
       - "apirator.io"
     resources:
